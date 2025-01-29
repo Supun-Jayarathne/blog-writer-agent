@@ -9,30 +9,72 @@ class BlogWriterAgent():
 	tasks_config = 'config/tasks.yaml'
 
 	@agent
+	def topic_generator(self) -> Agent:
+		return Agent(
+			config=self.agents_config['topic_generator'],
+			verbose=True
+		)
+
+	@agent
+	def topic_selector(self) -> Agent:
+		return Agent(
+			config=self.agents_config['topic_selector'],
+			verbose=True
+		)
+	
+	@agent
 	def researcher(self) -> Agent:
 		return Agent(
 			config=self.agents_config['researcher'],
 			verbose=True
 		)
-
+	
 	@agent
-	def reporting_analyst(self) -> Agent:
+	def content_creator(self) -> Agent:
 		return Agent(
-			config=self.agents_config['reporting_analyst'],
+			config=self.agents_config['content_creator'],
+			verbose=True
+		)
+	
+	@agent
+	def blog_writer(self) -> Agent:
+		return Agent(
+			config=self.agents_config['blog_writer'],
 			verbose=True
 		)
 
 	@task
-	def research_task(self) -> Task:
+	def topic_generator_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['research_task'],
+			config=self.tasks_config['topic_generator_task'],
 		)
 
 	@task
-	def reporting_task(self) -> Task:
+	def topic_selector_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['reporting_task'],
-			output_file='report.md'
+			config=self.tasks_config['topic_selector_task'],
+			# output_file='report.md'
+		)
+	
+	@task
+	def researcher_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['researcher_task'],
+			# output_file='report.md'
+		)
+	
+	@task
+	def content_creator_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['content_creator_task'],
+			# output_file='report.md'
+		)
+	
+	@task
+	def blog_writer_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['blog_writer_task'],
+			output_file='blog.md'
 		)
 
 	@crew
