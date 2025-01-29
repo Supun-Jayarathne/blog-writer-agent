@@ -7,14 +7,14 @@ from blog_writer_agent.crew import BlogWriterAgent
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
-topic = ''
+area = ''
 
 def run():
     """
     Run the crew.
     """
     inputs = {
-        'topic': topic,
+        'area': area,
     }
     
     try:
@@ -22,9 +22,9 @@ def run():
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
 
-def run_crewai_app(topic):
-    topic = topic
-    final_answer = BlogWriterAgent().crew().kickoff(inputs={'topic': topic})
+def run_crewai_app(area):
+    area = area
+    final_answer = BlogWriterAgent().crew().kickoff(inputs={'area': area})
     return final_answer
 
 iface = gr.Interface(

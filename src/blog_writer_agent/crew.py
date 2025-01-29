@@ -53,21 +53,18 @@ class BlogWriterAgent():
 	def topic_selector_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['topic_selector_task'],
-			# output_file='report.md'
 		)
 	
 	@task
 	def researcher_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['researcher_task'],
-			# output_file='report.md'
 		)
 	
 	@task
 	def content_creator_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['content_creator_task'],
-			# output_file='report.md'
 		)
 	
 	@task
